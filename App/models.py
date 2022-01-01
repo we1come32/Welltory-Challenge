@@ -11,7 +11,7 @@ class User(models.Model):
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
-    user = models.ForeignKey(DjangoUser, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='info')
+    user = models.ForeignKey(DjangoUser, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='tbrgfj')
 
     def get_correlation(self):
         pass
