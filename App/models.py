@@ -1,4 +1,5 @@
 from typing import Dict, List
+import numpy as np
 
 from django.db import models
 from django.utils import timezone
@@ -13,8 +14,17 @@ class User(models.Model):
         verbose_name_plural = 'Пользователи'
     user = models.ForeignKey(DjangoUser, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='tbrgfj')
 
-    def get_correlation(self):
-        pass
+    def get_correlation(self, names: list[str]):
+        if len(names) == 2:
+            if type(names[0]) == type(names[1]) == str:
+                data1 = self.values.filter(name=names[0].lower())
+                data2 = self.values.filter(name=names[1].lower())
+                dates = set(data1.values_list('date')) & set(data2.values_list('date'))
+                dates = [_[0] for _ in dates]
+                data1 = np.array([_[0] for _ in self.values.filter(date__in=dates, name=names[0]).values_list('value')])
+                data2 = np.array([_[0] for _ in self.values.filter(date__in=dates, name=names[1]).values_list('value')])
+                return np.corrcoef(data1, data2)
+        raise ValueError("Unknown names data")
 
     def add_data(self, name: str, values: List[PydanticValue]) -> bool:
         for value in values:
