@@ -29,7 +29,6 @@ def calculate(request: HttpRequest) -> HttpResponse:
 @csrf_exempt
 def correlation(request: HttpRequest) -> HttpResponse | JsonResponse | None:
     if request.method == 'GET':
-        print(request.GET)
         if user_id := request.GET.get('user_id', False):
             try:
                 user = DjangoUser.objects.get(id=int(user_id))
