@@ -2,7 +2,7 @@ build:
 	docker build -t we1come32/welltory-challenge:latest .
 
 run:
-	docker run --name wc -d we1come32/welltory-challenge
+	docker run --name wc -d we1come32/welltory-challenge -p 80:8080
 
 stop:
 	docker stop wc
@@ -15,7 +15,7 @@ logs:
 	docker logs wc
 
 start:
-	docker start wc -p 8080:80
+	docker start wc
 
 push:
 	docker push we1come32/welltory-challenge

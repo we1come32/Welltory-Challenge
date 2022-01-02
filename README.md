@@ -1,8 +1,8 @@
 # Инструкция для запуска Docker-контейнера
 1) Установить Docker с <a href="https://docker.com">официального сайта</a>
 2) Скачать образ, прописав команду `docker pull we1come32/Welltory-Challenge`
-3) Создать контейнер с помощью команды `docker run --name wc -d we1come32/Welltory-Challenge`
-4) Запустить контейнер с помощью команды `docker start wc -p 8080:80`
+3) Создать контейнер с помощью команды `docker run --name wc -d we1come32/Welltory-Challenge -p 8080:80`
+4) Запустить контейнер с помощью команды `docker start wc`
 5) Проверить работоспособность, перейдя <a href="http://localhost">по ссылке</a>
 
 Данные для авториации в <a href="https://localhost/admin">админпанели Django</a> (URL: `http://localhost/`) 

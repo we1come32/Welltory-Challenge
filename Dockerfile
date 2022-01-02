@@ -14,4 +14,4 @@ RUN python manage.py makemigrations
 RUN python manage.py migrate
 
 # запуск сервера на 8080 порте локалхоста
-ENTRYPOINT bash -c "python manage.py runserver localhost:8080"
+ENTRYPOINT bash -c "python manage.py runserver 0.0.0.0:8080"
